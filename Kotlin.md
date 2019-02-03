@@ -71,3 +71,25 @@
 >     fun incrementX() { 
 >         x += 1 
 >     }
+
+**Using string templates**
+
+    var a = 1
+    // simple name in template:
+    val s1 = "a is $a" 
+    a = 2
+    // arbitrary expression in template:
+    val s2 = "${s1.replace("is", "was")}, but now is $a"
+**Using conditional expressions**
+
+    fun maxOf(a: Int, b: Int): Int {
+        if (a > b) {
+            return a
+        } else {
+            return b
+        }
+    }
+
+Using _if_ as an expression:
+
+	fun maxOf(a: Int, b: Int) = if (a > b) a else b
