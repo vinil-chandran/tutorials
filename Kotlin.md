@@ -202,6 +202,7 @@ Using lambda expressions to filter and map collections:
 Java Virtual Machine(JVM) is the Target Platform of Kotlin. Kotlin is 100% interoperable with Java since both, on compilation produce byte code. Hence Kotlin code can be called from Java and vice-versa.
 
 **What’s a const? How does it differ from a val?**
+
 By default val properties are set at runtime. Adding a const modifier on a val would make a compile-time constant. A const cannot be used with a var or on its own. A const is not applicable on a local variable.
 
 **Is Kotlin asynchronous or synchronous?**
