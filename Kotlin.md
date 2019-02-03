@@ -197,3 +197,31 @@ Using lambda expressions to filter and map collections:
       .sortedBy { it }
       .map { it.toUpperCase() }
       .forEach { println(it) }
+
+**What’s the Target Platform of Kotlin? How is Kotlin-Java interoperability possible?**
+Java Virtual Machine(JVM) is the Target Platform of Kotlin. Kotlin is 100% interoperable with Java since both, on compilation produce byte code. Hence Kotlin code can be called from Java and vice-versa.
+
+**What’s a const? How does it differ from a val?**
+By default val properties are set at runtime. Adding a const modifier on a val would make a compile-time constant. A const cannot be used with a var or on its own. A const is not applicable on a local variable.
+
+**Is Kotlin asynchronous or synchronous?**
+Kotlin is synchronous because it's execution is line by line.
+
+**What’s the entry point of every Kotlin Program?**
+The main function is the entry point of every Kotlin program. In Kotlin we can choose not to write the main function inside the class. On compiling the JVM implicitly encapsulates it in a class. The strings passed in the form of Array<String> are used to retrieve the command line arguments.
+
+**How is !!different from ?. in unwrapping the nullable values? Is there any other way to unwrap nullable values safely?**
+!! is used to force unwrap the nullable type to get the value. If the value returned is a null, it would lead to a runtime crash. Hence a !! operator should be only used when you’re absolutely sure that the value won’t be null at all. Otherwise, you’ll get the dreaded null pointer exception. On the other hand, a ?. is an Elvis Operator that does a safe call.
+
+**List down the visibility modifiers available in Kotlin.**
+ - private - means visible inside this class only (including all its
+
+   members)
+ - protected - same as private + visible in subclasses too
+ - internal - any client inside this module who sees the declaring class
+   sees its internal members
+ - public - any client who sees the declaring class sees its public
+   members
+
+**What’s the default visibility modifier?**
+public is the default    visibility modifier.
