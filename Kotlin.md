@@ -16,4 +16,9 @@
    to the size of the .apk file.   
  - **Compilation Time**: Kotlin supports efficient incremental compilation, so while there's some additional overhead for clean
    builds, incremental builds are usually as fast or faster than with
-   Java.
+   Java.   
+ - **Learning Curve**: For a Java developer, getting started with Kotlin is
+   very easy. The automated Java to Kotlin converter included in the
+   Kotlin plugin helps with the first steps. Kotlin Koans offer a guide
+   through the key features of the language with a series of interactive
+   exercises.
