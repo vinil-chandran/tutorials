@@ -93,3 +93,56 @@
 Using _if_ as an expression:
 
 	fun maxOf(a: Int, b: Int) = if (a > b) a else b
+
+**Using nullable values and checking for _null_**
+
+    fun parseInt(str: String): Int? {
+	    // ...
+    }
+    
+
+> Return _null_ if `str` does not hold an integer:
+> 
+**Using type checks and automatic casts**
+The _is_ operator checks if an expression is an instance of a type. If an immutable local variable or property is checked for a specific type, there's no need to cast it explicitly:
+
+    fun getStringLength(obj: Any): Int? {
+        if (obj is String) {
+            // `obj` is automatically cast to `String` in this branch
+            return obj.length
+        }
+    
+        // `obj` is still of type `Any` outside of the type-checked branch
+        return null
+    }
+**Using a  `for`  loop**
+
+    val items = listOf("apple", "banana", "kiwifruit")
+    for (item in items) {
+        println(item)
+    }
+or
+
+    val items = listOf("apple", "banana", "kiwifruit")
+    for (index in items.indices) {
+        println("item at $index is ${items[index]}")
+    }
+**Using a  `while`  loop**
+
+    val items = listOf("apple", "banana", "kiwifruit")
+    var index = 0
+    while (index < items.size) {
+        println("item at $index is ${items[index]}")
+        index++
+    }
+**Using  `when`  expression**
+
+    fun describe(obj: Any): String =
+        when (obj) {
+            1          -> "One"
+            "Hello"    -> "Greeting"
+            is Long    -> "Long"
+            !is String -> "Not a string"
+            else       -> "Unknown"
+    }
+   
