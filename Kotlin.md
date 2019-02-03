@@ -22,8 +22,8 @@
    Kotlin plugin helps with the first steps. Kotlin Koans offer a guide
    through the key features of the language with a series of interactive
    exercises.
+   
 **Defining functions**
-
  - Function having two Int parameters with Int return type:
 
 		fun sum(a: Int, b: Int): Int {
