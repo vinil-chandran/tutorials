@@ -145,4 +145,55 @@ or
             !is String -> "Not a string"
             else       -> "Unknown"
     }
-   
+   **Using ranges**
+Check if a number is within a range using _in_ operator:
+
+    val x = 10
+    val y = 9
+    if (x in 1..y+1) {
+    	println("fits in range")
+    }
+Check if a number is out of range:
+
+    val list = listOf("a", "b", "c")
+    if (-1 !in 0..list.lastIndex) {
+        println("-1 is out of range")
+    }
+    if (list.size !in list.indices) {
+        println("list size is out of valid list indices range, too")
+    }
+Iterating over a range:
+
+    for (x in 1..5) {
+        print(x)
+    }
+or over a progression:
+
+    for (x in 1..10 step 2) {
+        print(x)
+    }
+    println()
+    for (x in 9 downTo 0 step 3) {
+        print(x)
+    }
+**Using collections**
+Iterating over a collection:
+
+    for (item in items) {
+        println(item)
+    }
+
+Checking if a collection contains an object using _in_ operator:
+
+    when {
+        "orange" in items -> println("juicy")
+        "apple" in items -> println("apple is fine too")
+    }
+Using lambda expressions to filter and map collections:
+
+    val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+    fruits
+      .filter { it.startsWith("a") }
+      .sortedBy { it }
+      .map { it.toUpperCase() }
+      .forEach { println(it) }
