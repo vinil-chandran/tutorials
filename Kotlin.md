@@ -22,3 +22,34 @@
    Kotlin plugin helps with the first steps. Kotlin Koans offer a guide
    through the key features of the language with a series of interactive
    exercises.
+**Defining functions**
+
+ - Function having two Int parameters with Int return type:
+
+		fun sum(a: Int, b: Int): Int {
+    			return a + b
+		}
+
+> sum of 3 and 5 is 8
+
+ - Function with an expression body and inferred return type:
+
+		fun sum(a: Int, b: Int) = a + b
+
+> sum of 19 and 23 is 42
+
+ - Function returning no meaningful value:
+
+		fun printSum(a: Int, b: Int): Unit {
+    			println("sum of $a and $b is ${a + b}")
+		}
+
+> sum of -1 and 8 is 7
+ - Unit return type can be omitted:
+
+		fun printSum(a: Int, b: Int) {
+   			 println("sum of $a and $b is ${a + b}")
+		}
+		
+
+> sum of -1 and 8 is 7
