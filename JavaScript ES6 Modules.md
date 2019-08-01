@@ -1,4 +1,4 @@
-﻿### Strict Mode
+### Strict Mode
 Using strict mode is the default in ES6 Modules, therefore specifying “use
 strict” is not required.
 
@@ -1898,3 +1898,145 @@ It will delete a property of an object by it's name.
     
     console.log(person.language);
     //undefined
+
+### Proxy
+The Proxy object is used to define custom behaviour for fundamental operations (e.g. property lookup, assignment, enumeration, function invocation, etc). The object is wrapping by the proxy and we can access it only through the proxy.
+
+#### `get:function()` and `set:function()`
+
+    let person = {
+      name : "Adam",
+      age : 18
+    }    
+    let handler = {      
+      get: function(target, prop){
+        return prop in target? target[prop] : `Filed '${prop}' not found`;
+      },
+      set: function(obj, prop, value){
+        if(value.length>2){
+          Reflect.set(obj,prop,value);
+        }
+      }
+    }    
+    
+    let proxyObj = new Proxy(person, handler);
+    console.log(proxyObj.name);
+    //"Adam"
+    console.log(proxyObj.age);
+    //18
+    proxyObj.name = "A"
+    console.log(proxyObj.name);
+    //"Adam"
+    proxyObj.name = "Hawa"
+    console.log(proxyObj.name);
+    //"Hawa"
+
+Here the `proxyObj` act as a wrapper above the person. 
+
+#### Proxy as Prototype
+
+We can use the proxy as the prototype for an object for proxy protection.
+
+    let person = {
+      name : "Adam",
+      age : 18
+    };    
+    let handler = {
+      get: function(target, prop){
+        return prop in target? target[prop] : (`Filed '${prop}' not found`);
+      },
+      set: function(obj, prop, value){
+        if(value.length>2){
+          Reflect.set(obj,prop,value);
+        }
+      }
+    };
+    let proxyObj = new Proxy({}, handler);
+    Reflect.setPrototypeOf(person,proxyObj);
+    console.log(person.name)
+    //"Adam"
+    person.name = "Hawa"
+    console.log(person.name)
+    //"Hawa"
+
+#### Proxy of Proxy
+We can use proxy over proxy
+
+    let person = {
+      name : "Adam",
+      age : 18
+    };    
+
+
+    let handler = {
+      
+    }
+    
+
+    let protoHandler = {
+      get: function(target, prop){
+        return prop in target? target[prop] : (`Filed '${prop}' not found`);
+      },
+      set: function(obj, prop, value){
+        if(value.length>2){
+          Reflect.set(obj,prop,value);
+        }
+      }
+    };
+    let proxy = new Proxy({}, handler);
+    let proxyProxy = new Proxy(proxy, protoHandler);
+    Reflect.setPrototypeOf(person,proxyProxy);
+    console.log(person.name)
+    //"Adam"
+    person.name = "Hawa"
+    console.log(person.name)
+    //"Hawa"
+
+#### Proxy for Functions
+We can use proxy for calling the function directly.
+
+    function log(message){
+      console.log(`Message is ${message}`)
+    }
+    
+    let handler = {
+      apply: function(target, thisArg, argumentsList) {
+        if(argumentsList.length > 0){
+          return Reflect.apply(target, thisArg, argumentsList);
+        }
+        else{
+           console.log("No args")
+        }
+      }
+    }
+    
+    let proxy = new Proxy(log,handler);
+    proxy("Hi")
+    //"Message is Hi"
+    proxy()
+    //"No args"
+
+#### Revocable Proxy
+We can cancel the proxy after it's use is over.
+
+    let person = {
+      name : "Adam"
+    }    
+    let handler = {
+      get: function(target, prop) {
+        return Reflect.get(target, prop)
+      }
+    }
+    
+    let {proxy,revoke} = Proxy.revocable(person,handler);    
+    console.log(proxy.name) 
+    //"Adam"   
+    revoke();
+    console.log(proxy.name)
+    /*
+	   "error"    
+	   "TypeError: Cannot perform 'get' on a proxy that has been revoked  
+	    at sivuhocuya.js:16:44  
+	    at https://static.jsbin.com/js/prod/runner-4.1.7.min.js:1:13924  
+	    at https://static.jsbin.com/js/prod/runner-4.1.7.min.js:1:10866"
+	*/
