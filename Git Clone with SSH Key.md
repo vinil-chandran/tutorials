@@ -10,3 +10,6 @@
 - Past the copied SSH key in
 
     ``` GitHub->Setting->SSH and GPG Keys ```
+- Use the following command to clone git to the folder
+
+    ``` $ git clone <git SSH URL>
