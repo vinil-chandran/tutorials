@@ -12,4 +12,4 @@
     ``` GitHub->Setting->SSH and GPG Keys ```
 - Use the following command to clone git to the folder
 
-    ``` $ git clone <git SSH URL>
+    ``` $ git clone <git SSH URL> ```
