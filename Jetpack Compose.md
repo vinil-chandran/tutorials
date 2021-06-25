@@ -5,7 +5,7 @@
 - Programmatically creating the UI widgets using Kotlin language.
 - Jetpack Compose Built around composable functions
 - Android Studio Preview version needed since it's not stable
-- UI is visible while development similar to XML design
+- UI preview is available while development similar to XML design
 
 ### Composable functions 
 - Jetpack Compose functions are called for adding each element in the view.
