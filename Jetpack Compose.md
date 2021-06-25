@@ -18,3 +18,7 @@
 - Android Studio lets you preview your composable functions within the IDE
 - The composable function must not take any parameters.
 - Need to Rebuild your project for refresh the preview
+
+
+### Reference
+https://developer.android.com/jetpack/compose/tutorial?gclid=EAIaIQobChMIvK2_isWw8QIVGCQrCh05gQcqEAAYASABEgIxavD_BwE&gclsrc=aw.ds
